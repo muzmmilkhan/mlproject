@@ -15,5 +15,5 @@ logging.basicConfig(
 
 )
 
-def get_logger():
-    return logging.getLogger()
+def get_logger(name):
+    return logging.getLogger(name=name)
