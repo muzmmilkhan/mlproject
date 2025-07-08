@@ -53,7 +53,7 @@ if __name__ == "__main__":
     train_array, test_array, _= data_transformation.initiate_data_transformation(train_data, test_data)
 
     model_trainer = ModelTrainer()
-    model_trainer.initiate_model_trainer(train_array, test_array)
+    print(model_trainer.initiate_model_trainer(train_array, test_array))
 
     print("Data Ingestion completed successfully")
     

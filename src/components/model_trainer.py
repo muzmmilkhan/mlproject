@@ -46,8 +46,42 @@ class ModelTrainer:
                 'CatBoostRegressor': CatBoostRegressor(verbose=0),
                 'XGBRegressor': XGBRegressor(eval_metric='rmse')
             }
+            
+            #match the above models with their respective hyperparameters
+            params = {
+                'RandomForestRegressor': {
+                    'n_estimators': [100, 200],
+                    'max_depth': [None, 10, 20],
+                    'min_samples_split': [2, 5]
+                },
+                'GradientBoostingRegressor': {
+                    'n_estimators': [100, 200],
+                    'learning_rate': [0.01, 0.1],
+                    'max_depth': [3, 5]
+                },
+                'AdaBoostRegressor': {
+                    'n_estimators': [50, 100],
+                    'learning_rate': [1.0, 0.1]
+                },
+                'LinearRegression': {},
+                'KNeighborsRegressor': {
+                    'n_neighbors': [3, 5, 7]
+                },
+                'DecisionTreeRegressor': {
+                    'max_depth': [None, 10, 20],
+                    'min_samples_split': [2, 5]
+                },
+                'CatBoostRegressor': {
+                    'iterations': [100, 200],
+                    'depth': [6, 8]
+                },
+                'XGBRegressor': {
+                    'n_estimators': [100, 200],
+                    'learning_rate': [0.01, 0.1]
+                }
+            }   
 
-            model_report = evaluate_models(X_train, y_train, X_test, y_test, models)  
+            model_report = evaluate_models(X_train, y_train, X_test, y_test, models, params)  
 
             best_model_score = max(sorted(model_report.values()))
             best_model_name = list(model_report.keys())[
