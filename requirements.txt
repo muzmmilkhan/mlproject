@@ -7,4 +7,5 @@ scipy
 xgboost
 catboost
 dill
+gradio
 # -e .
